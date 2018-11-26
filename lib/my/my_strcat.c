@@ -9,14 +9,10 @@
 
 char *my_strcat(char *dest, char const *src)
 {
-    int nb;
     int i = 0;
     char len_dest;
-    char len_src;
 
     len_dest = my_strlen(dest);
-    len_src = my_strlen(src);
-    dest[len_src + len_dest];
     for (i = 0; src[i] != 0; i++) {
         dest[len_dest + i] = src[i];
     }

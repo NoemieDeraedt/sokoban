@@ -16,4 +16,5 @@ int error_verification(char *buffer)
             && buff != '\n' && buff != ' ' && buff != '\0')
             return (84);
     }
+    return 0;
 }

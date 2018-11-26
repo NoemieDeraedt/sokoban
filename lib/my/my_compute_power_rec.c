@@ -7,7 +7,6 @@
 
 int my_compute_power_rec(int nb, int p)
 {
-    int i;
     int power = nb;
 
     if (p == 0)

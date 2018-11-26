@@ -1,10 +1,11 @@
 /*
 ** EPITECH PROJECT, 2018
-** CPE_BSQ_2018
+** MUL_my_hunter_2018
 ** File description:
 ** main.c
 */
 
-int main(int argc, char const *argv[]) {
+int main(void)
+{
     return 0;
 }

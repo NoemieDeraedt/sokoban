@@ -8,7 +8,7 @@
 #include <unistd.h>
 #include "../../include/my.h"
 
-int my_isneg(int n)
+void my_isneg(int n)
 {
     char negative = 'N';
     char positive = 'P';

@@ -15,6 +15,8 @@ NAME	=	test
 
 BINARY	=	my_sokoban
 
+CFLAGS	=	-W -Wall -Wextra
+
 all: $(NAME) clean $(BINARY)
 
 $(NAME):	$(OBJ) lib
@@ -24,7 +26,7 @@ lib:		$(OBJ)
 	ar rc libmy.a $(OBJ)
 
 $(BINARY):	$(SRC)
-	gcc -o $(BINARY) $(SRC) -L./ -lmy -lncurses
+	gcc -o $(BINARY) $(SRC) -L./ -lmy -lncurses $(CFLAGS)
 
 clean:
 	rm -f $(OBJ) $(NAME)

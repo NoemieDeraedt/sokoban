@@ -7,7 +7,7 @@
 
 #include "../../include/my.h"
 
-char *my_revstr(char *str)
+void my_revstr(char *str)
 {
     int len_str;
     int i = 0;

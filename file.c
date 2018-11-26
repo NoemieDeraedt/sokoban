@@ -11,19 +11,37 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <stdlib.h>
+#include <ncurses.h>
 
 char *inside_file(char const *file_path)
 {
-    int i;
     int fd;
     char *buff = malloc(10000);
-    int size;
 
     fd = open(file_path, O_RDONLY);
     if (fd == -1)
         return ("ERROR");
-    size = read(fd, buff, 9999);
     close(fd);
     free(buff);
-    return(buff);
+    return (buff);
+}
+
+int my_sokoban(char *buffer)
+{
+    WINDOW *window;
+    int sp;
+
+    printw("%s", buffer);
+    initscr();
+    while (1) {
+        clear();
+        printw("hello %s", buffer);
+        refresh();
+        sp = getch();
+        if (sp == 32)
+            return (0);
+    }
+    endwin();
+    free(window);
+    return (0);
 }

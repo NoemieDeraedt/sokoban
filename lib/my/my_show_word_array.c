@@ -7,7 +7,7 @@
 
 #include "../../include/my.h"
 
-int my_show_word_array(char * const *tab)
+void my_show_word_array(char * const *tab)
 {
     int i = 0;
     int j;
