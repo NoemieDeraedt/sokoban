@@ -6,6 +6,12 @@
 */
 
 #include "include/my.h"
+#include <unistd.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <stdlib.h>
+#include <ncurses.h>
 
 void rules(void)
 {
@@ -20,7 +26,7 @@ void rules(void)
 
 int main(int argc, char **argv)
 {
-    char *buffer;
+    char *buff;
 
     if (argc == 1)
         return 84;
@@ -28,12 +34,13 @@ int main(int argc, char **argv)
         rules();
         return (0);
     }
-    buffer = inside_file(argv[1]);
+    buff = inside_file(argv[1]);
 
     //GESTION D'ERREUR
-    if (error_verification(buffer) == 84)
+    if (error_verification(buff) == 84)
         return (84);
 
-    my_sokoban(buffer);
+    my_sokoban(buff);
+    free(buff);
     return 0;
 }
