@@ -45,7 +45,7 @@ int main(int argc, char **argv)
     if (result == 0)
         my_putstr("You win !\n");
     else if (result == 1)
-        my_putstr("You loose !\n");
+        my_putstr("You lose !\n");
     free(buff);
     return 0;
 }

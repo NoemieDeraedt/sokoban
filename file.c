@@ -58,9 +58,50 @@ int count_o(char *buffer)
     return o;
 }
 
-int detect_loose(char *buffer)
+int count_x(char * buffer)
 {
-    
+    int i;
+    int o = 0;
+
+    for (i = 0; buffer[i]; i++) {
+        if (buffer[i] == 'X')
+            o++;
+    }
+    return o;
+}
+
+int count_error(char *buffer, int i)
+{
+    int columns = count_columns(buffer);
+    int error = 0;
+
+    if (buffer[i + 1] == '#' || buffer[i + 1] == 'X')
+        error++;
+    if (buffer[i - 1] == '#' || buffer[i - 1] == 'X')
+        error++;
+    if (buffer[i + columns] == '#' || buffer[i + columns] == 'X')
+        error++;
+    if (buffer[i - columns] == '#' || buffer[i - columns] == 'X')
+        error++;
+    return error;
+}
+
+int detect_lose(char *buffer)
+{
+    int i;
+    int error = 0;
+    int x = count_x(buffer);
+    int count = 0;
+
+    for (i = 0; buffer[i]; i++) {
+        if (buffer[i] == 'X') {
+            error = count_error(buffer, i);
+            if (error >= 2)
+                count++;
+        }
+    }
+    if (count == x)
+        return 1;
     return 0;
 }
 
@@ -70,6 +111,7 @@ int my_sokoban(char *buffer)
     int p = detect_p(buffer);
     int columns = count_columns(buffer);
     int win = 0;
+    int lose;
     int o = count_o(buffer);
 
     initscr();
@@ -82,7 +124,7 @@ int my_sokoban(char *buffer)
         refresh();
         t = getch();
         if (t == 32)
-            return (0);
+            break;
         if (t == 67 && buffer[p + 1] != '#' && buffer[p + 1] != 'O') {
             if (buffer[p + 1] == 'X' && buffer[p + 2] != '#')
                 my_swap(&buffer[p + 1], &buffer[p + 2]);
@@ -128,12 +170,15 @@ int my_sokoban(char *buffer)
             }
         }
         p = detect_p(buffer);
-        if (detect_loose(buffer) == 1)
+        lose = detect_lose(buffer);
+        if (lose == 1)
             break;
     }
     clear();
     endwin();
     if (win == o)
         return 0;
-    return 1;
+    else if (lose == 1)
+        return 1;
+    return 2;
 }
