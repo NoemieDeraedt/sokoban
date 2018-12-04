@@ -27,6 +27,7 @@ void rules(void)
 int main(int argc, char **argv)
 {
     char *buff;
+    int result;
 
     if (argc == 1)
         return 84;
@@ -40,7 +41,11 @@ int main(int argc, char **argv)
     if (error_verification(buff) == 84)
         return (84);
 
-    my_sokoban(buff);
+    result = my_sokoban(buff);
+    if (result == 0)
+        my_putstr("You win !\n");
+    else if (result == 1)
+        my_putstr("You loose !\n");
     free(buff);
     return 0;
 }
