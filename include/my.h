@@ -23,7 +23,7 @@ char *my_strdup(char const *src);
 void my_show_word_array(char *const *tab);
 char *int_to_char(int number);
 char *number_in_array(char *str, int value);
-int my_sokoban(char *buffer);
+int my_sokoban(char *buffer, char *file_path);
 char *inside_file(char const *file_path);
 int error_verification(char *buffer);
 char *right(char *buffer, state *var);

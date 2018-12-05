@@ -54,7 +54,7 @@ int detect_p(char *buffer)
     return 84;
 }
 
-void open_window(char *buffer, state *var)
+void open_window(char *buffer, state *var, char *file_path)
 {
     int t;
 
@@ -68,12 +68,14 @@ void open_window(char *buffer, state *var)
         conditions(buffer, t, var);
         if (var->lose == 1)
             break;
-        if (t == 32)
-            break;
+        if (t == 32) {
+            *var = init_vars(buffer);
+            buffer = inside_file(file_path);
+        }
     }
 }
 
-int my_sokoban(char *buffer)
+int my_sokoban(char *buffer, char *file_path)
 {
     int t;
     state var = init_vars(buffer);
@@ -81,7 +83,7 @@ int my_sokoban(char *buffer)
     initscr();
     curs_set(FALSE);
     noecho();
-    open_window(buffer, &var);
+    open_window(buffer, &var, file_path);
     clear();
     endwin();
     if (var.win == var.o)

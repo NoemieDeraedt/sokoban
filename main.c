@@ -38,7 +38,7 @@ int main(int argc, char **argv)
     buff = inside_file(argv[1]);
     if (error_verification(buff) == 84)
         return (84);
-    result = my_sokoban(buff);
+    result = my_sokoban(buff, argv[1]);
     if (result == 0)
         my_putstr("You win !\n");
     else if (result == 1)
