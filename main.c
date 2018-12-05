@@ -36,11 +36,8 @@ int main(int argc, char **argv)
         return (0);
     }
     buff = inside_file(argv[1]);
-
-    //GESTION D'ERREUR
     if (error_verification(buff) == 84)
         return (84);
-
     result = my_sokoban(buff);
     if (result == 0)
         my_putstr("You win !\n");

@@ -5,6 +5,8 @@
 ** my.h
 */
 
+#include "struct.h"
+
 void my_putchar(char c);
 void my_isneg(int nb);
 void my_put_nbr(int nb);
@@ -24,3 +26,15 @@ char *number_in_array(char *str, int value);
 int my_sokoban(char *buffer);
 char *inside_file(char const *file_path);
 int error_verification(char *buffer);
+char *right(char *buffer, state *var);
+char *left(char *buffer, state *var);
+char *up(char *buffer, state *var);
+char *down(char *buffer, state *var);
+int detect_lose(char *buffer);
+int count_error(char *buffer, int i);
+int detect_p(char *buffer);
+int count_columns(char *buffer);
+int count_o(char *buffer);
+int count_x(char * buffer);
+state init_vars(char *buffer);
+void conditions(char *buffer, int t, state *var);
