@@ -5,6 +5,8 @@
 ** error_verification.c
 */
 
+#include <stdio.h>
+
 int error_verification(char *buffer)
 {
     char buff;

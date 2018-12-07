@@ -12,3 +12,10 @@ typedef struct states {
     int o;
     int lose;
 } state;
+
+typedef struct error {
+    int error_up;
+    int error_down;
+    int error_left;
+    int error_right;
+} error;
