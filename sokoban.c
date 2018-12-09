@@ -8,14 +8,6 @@
 #include "include/my.h"
 #include <ncurses.h>
 
-void initstruct(error *hashtags)
-{
-    hashtags->error_right = 0;
-    hashtags->error_left = 0;
-    hashtags->error_up = 0;
-    hashtags->error_down = 0;
-}
-
 int detect_lose(char *buffer)
 {
     int i;

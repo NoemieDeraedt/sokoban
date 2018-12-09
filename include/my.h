@@ -38,3 +38,4 @@ int count_o(char *buffer);
 int count_x(char * buffer);
 state init_vars(char *buffer);
 void conditions(char *buffer, int t, state *var);
+void initstruct(error *hashtags);
