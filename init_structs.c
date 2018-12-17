@@ -7,15 +7,12 @@
 
 #include "include/my.h"
 
-state init_vars(char *buffer)
+void init_vars(state *var, char *buffer)
 {
-    state var;
-
-    var.win = 0;
-    var.p = detect_p(buffer);
-    var.columns = count_columns(buffer);
-    var.o = count_o(buffer);
-    return var;
+    var->win = 0;
+    var->p = detect_p(buffer);
+    var->columns = count_columns(buffer);
+    var->o = count_o(buffer);
 }
 
 void initstruct(error *hashtags)

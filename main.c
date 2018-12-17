@@ -20,7 +20,8 @@ void rules(void)
     my_putstr("DESCRIPTION\n");
     my_putstr("    map  file representing the warehouse map, ");
     my_putstr("containing ‘#’ for walls, \n");
-    my_putstr("         ‘P’ for the player, ‘X’ for boxes and ‘O’ ");
+    my_putstr("         ‘P’ for the player, ");
+    my_putstr("‘X’ for boxes and ‘O’ ");
     my_putstr("for storage locations.\n");
 }
 
@@ -41,8 +42,10 @@ int main(int argc, char **argv)
     result = my_sokoban(buff, argv[1]);
     if (result == 0)
         my_putstr("You win !\n");
-    else if (result == 1)
+    else if (result == 1) {
         my_putstr("You lose !\n");
+        return 1;
+    }
     free(buff);
     return 0;
 }

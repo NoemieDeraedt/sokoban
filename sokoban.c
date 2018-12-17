@@ -7,6 +7,7 @@
 
 #include "include/my.h"
 #include <ncurses.h>
+#include <stdlib.h>
 
 int detect_lose(char *buffer)
 {
@@ -54,10 +55,9 @@ int detect_p(char *buffer)
 {
     int i;
 
-    for (i = 0; buffer[i]; i++) {
+    for (i = 0; buffer[i]; i++)
         if (buffer[i] == 'P')
             return (i);
-    }
     return 84;
 }
 
@@ -76,7 +76,7 @@ void open_window(char *buffer, state *var, char *file_path)
         if (var->lose == 1)
             break;
         if (t == 32) {
-            *var = init_vars(buffer);
+            init_vars(var, buffer);
             buffer = inside_file(file_path);
         }
     }
@@ -84,17 +84,18 @@ void open_window(char *buffer, state *var, char *file_path)
 
 int my_sokoban(char *buffer, char *file_path)
 {
-    state var = init_vars(buffer);
+    state *var = malloc(sizeof(state));
 
+    init_vars(var, buffer);
     initscr();
     curs_set(FALSE);
     noecho();
-    open_window(buffer, &var, file_path);
+    open_window(buffer, var, file_path);
     clear();
     endwin();
-    if (var.win == var.o)
+    if (var->win == var->o)
         return 0;
-    else if (var.lose == 1)
+    else if (var->lose == 1)
         return 1;
     return 2;
 }

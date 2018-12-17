@@ -36,6 +36,6 @@ int detect_p(char *buffer);
 int count_columns(char *buffer);
 int count_o(char *buffer);
 int count_x(char * buffer);
-state init_vars(char *buffer);
+void init_vars(state *var, char *buffer);
 void conditions(char *buffer, int t, state *var);
 void initstruct(error *hashtags);
