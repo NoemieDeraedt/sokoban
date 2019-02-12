@@ -1,3 +1,5 @@
 my_sokoban
 libmy.a
 maps/
+*.o
+test
